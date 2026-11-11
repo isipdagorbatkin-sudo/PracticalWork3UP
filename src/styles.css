@@ -1,0 +1,433 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #2c2527;
+  background: #faf7f8;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.header {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 7%;
+  background: #ffffff;
+  border-bottom: 1px solid #eadfe2;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  border: 0;
+  background: none;
+  color: #b65370;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  gap: 8px;
+}
+
+nav button {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #53494b;
+}
+
+nav button:hover,
+nav button.active {
+  background: #f7e5ea;
+  color: #a13e5b;
+}
+
+main {
+  min-height: calc(100vh - 128px);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px 60px;
+}
+
+.hello {
+  text-align: right;
+  color: #777;
+  margin-bottom: 12px;
+}
+
+.catalog-layout {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 28px;
+}
+
+.filters {
+  background: #fff;
+  padding: 22px;
+  border: 1px solid #eadfe2;
+  border-radius: 10px;
+  align-self: start;
+  position: sticky;
+  top: 96px;
+}
+
+.filters h3 {
+  margin-top: 0;
+}
+
+.filters label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 15px 0;
+}
+
+.filters input {
+  accent-color: #b65370;
+  width: 17px;
+  height: 17px;
+}
+
+.page-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 24px;
+}
+
+h1 {
+  font-size: 32px;
+  margin: 0 0 8px;
+}
+
+.page-title p,
+.login-form > p,
+.empty p {
+  margin: 0;
+  color: #746b6d;
+}
+
+.page-title > span {
+  color: #876f76;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.service-card {
+  background: #fff;
+  border: 1px solid #eadfe2;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 3px 12px rgba(70, 40, 50, 0.05);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  min-height: 26px;
+}
+
+.category {
+  color: #a13e5b;
+  font-size: 14px;
+}
+
+.discount {
+  background: #c74662;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.service-card h2 {
+  margin: 13px 0 8px;
+  font-size: 21px;
+}
+
+.service-card p {
+  color: #6e6466;
+  min-height: 40px;
+  line-height: 1.4;
+}
+
+.duration {
+  color: #8b8183;
+  font-size: 14px;
+  padding: 10px 0 18px;
+}
+
+.card-bottom {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  border-top: 1px solid #f0e7e9;
+  padding-top: 16px;
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.price del {
+  color: #999;
+  font-size: 13px;
+}
+
+.price strong {
+  font-size: 20px;
+}
+
+.primary {
+  border: 0;
+  border-radius: 7px;
+  padding: 11px 18px;
+  background: #b65370;
+  color: white;
+}
+
+.primary:hover {
+  background: #9f3f5b;
+}
+
+.primary:disabled {
+  opacity: .6;
+}
+
+.message,
+.empty {
+  background: white;
+  border: 1px solid #eadfe2;
+  padding: 50px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.error,
+.form-error {
+  color: #a51e35;
+  background: #ffe9ed;
+}
+
+.cart-page {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.cart-page h1 {
+  margin-bottom: 24px;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 1fr auto 110px auto;
+  gap: 22px;
+  align-items: center;
+  padding: 18px;
+  background: #fff;
+  border: 1px solid #eadfe2;
+  border-radius: 9px;
+  margin-bottom: 10px;
+}
+
+.cart-item h3 {
+  margin: 0 0 5px;
+}
+
+.cart-item span {
+  color: #7b6d70;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quantity button {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #dccbd0;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.remove {
+  border: 0;
+  background: none;
+  color: #a51e35;
+}
+
+.order-box {
+  background: #fff;
+  border: 1px solid #eadfe2;
+  border-radius: 10px;
+  padding: 24px;
+  margin-top: 24px;
+}
+
+.order-box h2 {
+  margin-top: 0;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+label {
+  color: #4c4244;
+}
+
+label input,
+label select {
+  display: block;
+  width: 100%;
+  margin-top: 7px;
+  border: 1px solid #d7c8cc;
+  border-radius: 6px;
+  padding: 11px;
+  background: white;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  margin: 22px 0;
+  font-size: 22px;
+}
+
+.coupon {
+  color: #21814c;
+  font-weight: bold;
+}
+
+.wide {
+  width: 100%;
+}
+
+.form-error,
+.success {
+  padding: 11px 14px;
+  border-radius: 6px;
+  margin: 14px 0;
+}
+
+.success {
+  background: #e5f7eb;
+  color: #176437;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  padding-top: 35px;
+}
+
+.login-form {
+  width: 400px;
+  background: white;
+  border: 1px solid #eadfe2;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.login-form label {
+  display: block;
+  margin-top: 20px;
+}
+
+.test-users {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-top: 20px;
+  color: #76696c;
+  font-size: 14px;
+}
+
+.admin-page h1 {
+  margin-bottom: 24px;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.admin-grid form {
+  padding: 22px;
+  background: white;
+  border: 1px solid #eadfe2;
+  border-radius: 9px;
+}
+
+.admin-grid h2 {
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.admin-grid label {
+  display: block;
+  margin: 15px 0;
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+  background: #4b3c41;
+  color: #f6ecef;
+}
+
+@media (max-width: 800px) {
+  .header {
+    height: auto;
+    padding: 14px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .catalog-layout,
+  .service-grid,
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    position: static;
+  }
+
+  .cart-item {
+    grid-template-columns: 1fr auto;
+  }
+}
