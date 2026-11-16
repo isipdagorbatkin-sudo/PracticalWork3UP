@@ -44,7 +44,7 @@ export default function Cart({ cart, setCart, user, coupons, clearCart, setPage 
     return (
       <div className="empty">
         <h1>Корзина пустая</h1>
-        <p>Добавьте услуги из каталога</p>
+        <p>Добавьте продукты из каталога</p>
         <button className="primary" onClick={() => setPage('catalog')}>Перейти в каталог</button>
       </div>
     )
@@ -52,7 +52,7 @@ export default function Cart({ cart, setCart, user, coupons, clearCart, setPage 
 
   return (
     <section className="cart-page">
-      <h1>Корзина</h1>
+        <h1>Корзина покупок</h1>
       {message && <div className="success">{message}</div>}
       {cart.map((item) => (
         <div className="cart-item" key={item.id}>
@@ -71,15 +71,15 @@ export default function Cart({ cart, setCart, user, coupons, clearCart, setPage 
       ))}
       {!!cart.length && (
         <div className="order-box">
-          <h2>Оформление записи</h2>
+          <h2>Оформление доставки</h2>
           <div className="form-row">
-            <label>Дата<input type="date" value={date} onChange={(event) => setDate(event.target.value)} /></label>
-            <label>Время<input type="time" value={time} onChange={(event) => setTime(event.target.value)} /></label>
+            <label>Дата доставки<input type="date" value={date} onChange={(event) => setDate(event.target.value)} /></label>
+            <label>Время доставки<input type="time" value={time} onChange={(event) => setTime(event.target.value)} /></label>
           </div>
           {coupon.discount_percent > 0 && <p className="coupon">Персональная скидка: {coupon.discount_percent}%</p>}
           <div className="total"><span>Итого</span><strong>{total.toLocaleString()} ₽</strong></div>
           {error && <div className="form-error">{error}</div>}
-          <button className="primary wide" disabled={sending} onClick={order}>{sending ? 'Оформляем...' : 'Оформить запись'}</button>
+          <button className="primary wide" disabled={sending} onClick={order}>{sending ? 'Оформляем...' : 'Оформить заказ'}</button>
         </div>
       )}
     </section>

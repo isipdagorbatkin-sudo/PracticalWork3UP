@@ -40,12 +40,12 @@ async function initDatabase() {
      SELECT $1, $2, $3, id FROM roles WHERE name = 'user'
      ON CONFLICT (email) DO UPDATE SET name = EXCLUDED.name
      RETURNING id`,
-    ['Обычный пользователь', 'user@mail.ru', userPassword]
+    ['Обычный покупатель', 'user@mail.ru', userPassword]
   )
   const userId = userResult.rows[0].id
   await pool.query(
     `INSERT INTO user_coupons (user_id, coupon_id)
-     SELECT $1, id FROM coupons WHERE name = 'Постоянный клиент'
+     SELECT $1, id FROM coupons WHERE name = 'Постоянный покупатель'
      ON CONFLICT (user_id, coupon_id) DO NOTHING`,
     [userId]
   )
@@ -69,7 +69,7 @@ function admin(req, res, next) {
 
 app.get('/', (req, res) => {
   res.json({
-    message: 'API Beauty Studio работает',
+    message: 'API продуктового магазина работает',
     endpoints: ['/api/test', '/api/services', '/api/categories']
   })
 })
@@ -98,7 +98,7 @@ app.get('/api/services', async (req, res) => {
     )
     res.json(result.rows)
   } catch {
-    res.status(500).json({ error: 'Не удалось загрузить услуги' })
+    res.status(500).json({ error: 'Не удалось загрузить товары' })
   }
 })
 
@@ -137,7 +137,7 @@ app.get('/api/profile/coupons', auth, async (req, res) => {
 
 app.post('/api/orders', auth, async (req, res) => {
   const { items, date, time, total } = req.body
-  if (!items?.length || !date || !time) return res.status(400).json({ error: 'Заполните данные записи' })
+  if (!items?.length || !date || !time) return res.status(400).json({ error: 'Заполните данные доставки' })
   const client = await pool.connect()
   try {
     await client.query('BEGIN')
@@ -155,10 +155,10 @@ app.post('/api/orders', auth, async (req, res) => {
       [req.user.id, total]
     )
     await client.query('COMMIT')
-    res.status(201).json({ message: 'Запись создана' })
+    res.status(201).json({ message: 'Заказ оформлен' })
   } catch {
     await client.query('ROLLBACK')
-    res.status(500).json({ error: 'Не удалось оформить запись' })
+    res.status(500).json({ error: 'Не удалось оформить заказ' })
   } finally {
     client.release()
   }

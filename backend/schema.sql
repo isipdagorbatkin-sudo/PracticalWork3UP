@@ -60,53 +60,72 @@ CREATE TABLE IF NOT EXISTS payments (
 
 INSERT INTO roles (name) VALUES ('admin'), ('user') ON CONFLICT (name) DO NOTHING;
 
+UPDATE categories SET name = 'Овощи и фрукты' WHERE name = 'Волосы';
+UPDATE categories SET name = 'Молочные продукты' WHERE name = 'Ногти';
+UPDATE categories SET name = 'Выпечка' WHERE name = 'Лицо';
+UPDATE categories SET name = 'Напитки' WHERE name = 'Массаж';
+
 INSERT INTO categories (name) VALUES
-  ('Волосы'),
-  ('Ногти'),
-  ('Лицо'),
-  ('Массаж')
+  ('Овощи и фрукты'),
+  ('Молочные продукты'),
+  ('Выпечка'),
+  ('Напитки'),
+  ('Бакалея')
 ON CONFLICT (name) DO NOTHING;
 
-INSERT INTO services (name, description, duration, price, category_id, discount_percent)
-SELECT 'Женская стрижка', 'Стрижка и простая укладка', 60, 1800, id, 20 FROM categories WHERE name = 'Волосы'
-AND NOT EXISTS (SELECT 1 FROM services WHERE name = 'Женская стрижка');
+UPDATE services SET name = 'Яблоки фермерские', description = 'Сочные яблоки нового урожая', duration = 30, price = 189, category_id = (SELECT id FROM categories WHERE name = 'Овощи и фрукты'), discount_percent = 15 WHERE name = 'Женская стрижка';
+UPDATE services SET name = 'Томаты сливовидные', description = 'Спелые томаты из местной теплицы', duration = 14, price = 249, category_id = (SELECT id FROM categories WHERE name = 'Овощи и фрукты'), discount_percent = 0 WHERE name = 'Мужская стрижка';
+UPDATE services SET name = 'Бананы', description = 'Сладкие бананы, цена за килограмм', duration = 10, price = 159, category_id = (SELECT id FROM categories WHERE name = 'Овощи и фрукты'), discount_percent = 0 WHERE name = 'Окрашивание волос';
+UPDATE services SET name = 'Молоко 3,2%', description = 'Пастеризованное молоко, 1 литр', duration = 10, price = 99, category_id = (SELECT id FROM categories WHERE name = 'Молочные продукты'), discount_percent = 10 WHERE name = 'Маникюр';
+UPDATE services SET name = 'Творог 5%', description = 'Натуральный творог, упаковка 200 г', duration = 7, price = 169, category_id = (SELECT id FROM categories WHERE name = 'Молочные продукты'), discount_percent = 0 WHERE name = 'Маникюр с покрытием';
+UPDATE services SET name = 'Хлеб деревенский', description = 'Свежий пшенично-ржаной хлеб', duration = 3, price = 89, category_id = (SELECT id FROM categories WHERE name = 'Выпечка'), discount_percent = 20 WHERE name = 'Педикюр';
+UPDATE services SET name = 'Круассан с шоколадом', description = 'Слоёный круассан с шоколадной начинкой', duration = 2, price = 119, category_id = (SELECT id FROM categories WHERE name = 'Выпечка'), discount_percent = 0 WHERE name = 'Чистка лица';
+UPDATE services SET name = 'Сок апельсиновый', description = 'Апельсиновый сок без добавления сахара, 1 л', duration = 180, price = 179, category_id = (SELECT id FROM categories WHERE name = 'Напитки'), discount_percent = 0 WHERE name = 'Уход за лицом';
+UPDATE services SET name = 'Вода минеральная', description = 'Негазированная минеральная вода, 1,5 л', duration = 365, price = 69, category_id = (SELECT id FROM categories WHERE name = 'Напитки'), discount_percent = 0 WHERE name = 'Массаж спины';
+UPDATE services SET name = 'Кофе зерновой', description = 'Кофе средней обжарки, упаковка 250 г', duration = 365, price = 599, category_id = (SELECT id FROM categories WHERE name = 'Бакалея'), discount_percent = 0 WHERE name = 'Общий массаж';
 
 INSERT INTO services (name, description, duration, price, category_id, discount_percent)
-SELECT 'Мужская стрижка', 'Классическая мужская стрижка', 40, 1000, id, 0 FROM categories WHERE name = 'Волосы'
-AND NOT EXISTS (SELECT 1 FROM services WHERE name = 'Мужская стрижка');
+SELECT 'Яблоки фермерские', 'Сочные яблоки нового урожая', 30, 189, id, 15 FROM categories WHERE name = 'Овощи и фрукты'
+AND NOT EXISTS (SELECT 1 FROM services WHERE name = 'Яблоки фермерские');
 
 INSERT INTO services (name, description, duration, price, category_id, discount_percent)
-SELECT 'Окрашивание волос', 'Окрашивание в один тон', 120, 3500, id, 0 FROM categories WHERE name = 'Волосы'
-AND NOT EXISTS (SELECT 1 FROM services WHERE name = 'Окрашивание волос');
+SELECT 'Томаты сливовидные', 'Спелые томаты из местной теплицы', 14, 249, id, 0 FROM categories WHERE name = 'Овощи и фрукты'
+AND NOT EXISTS (SELECT 1 FROM services WHERE name = 'Томаты сливовидные');
 
 INSERT INTO services (name, description, duration, price, category_id, discount_percent)
-SELECT 'Маникюр', 'Классический маникюр без покрытия', 50, 1200, id, 15 FROM categories WHERE name = 'Ногти'
-AND NOT EXISTS (SELECT 1 FROM services WHERE name = 'Маникюр');
+SELECT 'Бананы', 'Сладкие бананы, цена за килограмм', 10, 159, id, 0 FROM categories WHERE name = 'Овощи и фрукты'
+AND NOT EXISTS (SELECT 1 FROM services WHERE name = 'Бананы');
 
 INSERT INTO services (name, description, duration, price, category_id, discount_percent)
-SELECT 'Маникюр с покрытием', 'Маникюр и покрытие гель-лаком', 90, 1900, id, 0 FROM categories WHERE name = 'Ногти'
-AND NOT EXISTS (SELECT 1 FROM services WHERE name = 'Маникюр с покрытием');
+SELECT 'Молоко 3,2%', 'Пастеризованное молоко, 1 литр', 10, 99, id, 10 FROM categories WHERE name = 'Молочные продукты'
+AND NOT EXISTS (SELECT 1 FROM services WHERE name = 'Молоко 3,2%');
 
 INSERT INTO services (name, description, duration, price, category_id, discount_percent)
-SELECT 'Педикюр', 'Обработка стоп и ногтей', 80, 2200, id, 0 FROM categories WHERE name = 'Ногти'
-AND NOT EXISTS (SELECT 1 FROM services WHERE name = 'Педикюр');
+SELECT 'Творог 5%', 'Натуральный творог, упаковка 200 г', 7, 169, id, 0 FROM categories WHERE name = 'Молочные продукты'
+AND NOT EXISTS (SELECT 1 FROM services WHERE name = 'Творог 5%');
 
 INSERT INTO services (name, description, duration, price, category_id, discount_percent)
-SELECT 'Чистка лица', 'Базовая комбинированная чистка', 75, 2500, id, 10 FROM categories WHERE name = 'Лицо'
-AND NOT EXISTS (SELECT 1 FROM services WHERE name = 'Чистка лица');
+SELECT 'Хлеб деревенский', 'Свежий пшенично-ржаной хлеб', 3, 89, id, 20 FROM categories WHERE name = 'Выпечка'
+AND NOT EXISTS (SELECT 1 FROM services WHERE name = 'Хлеб деревенский');
 
 INSERT INTO services (name, description, duration, price, category_id, discount_percent)
-SELECT 'Уход за лицом', 'Очищение, маска и увлажнение', 60, 2100, id, 0 FROM categories WHERE name = 'Лицо'
-AND NOT EXISTS (SELECT 1 FROM services WHERE name = 'Уход за лицом');
+SELECT 'Круассан с шоколадом', 'Слоёный круассан с шоколадной начинкой', 2, 119, id, 0 FROM categories WHERE name = 'Выпечка'
+AND NOT EXISTS (SELECT 1 FROM services WHERE name = 'Круассан с шоколадом');
 
 INSERT INTO services (name, description, duration, price, category_id, discount_percent)
-SELECT 'Массаж спины', 'Расслабляющий массаж спины', 40, 1600, id, 0 FROM categories WHERE name = 'Массаж'
-AND NOT EXISTS (SELECT 1 FROM services WHERE name = 'Массаж спины');
+SELECT 'Сок апельсиновый', 'Апельсиновый сок без добавления сахара, 1 л', 180, 179, id, 0 FROM categories WHERE name = 'Напитки'
+AND NOT EXISTS (SELECT 1 FROM services WHERE name = 'Сок апельсиновый');
 
 INSERT INTO services (name, description, duration, price, category_id, discount_percent)
-SELECT 'Общий массаж', 'Массаж всего тела', 90, 3200, id, 0 FROM categories WHERE name = 'Массаж'
-AND NOT EXISTS (SELECT 1 FROM services WHERE name = 'Общий массаж');
+SELECT 'Вода минеральная', 'Негазированная минеральная вода, 1,5 л', 365, 69, id, 0 FROM categories WHERE name = 'Напитки'
+AND NOT EXISTS (SELECT 1 FROM services WHERE name = 'Вода минеральная');
+
+INSERT INTO services (name, description, duration, price, category_id, discount_percent)
+SELECT 'Кофе зерновой', 'Кофе средней обжарки, упаковка 250 г', 365, 599, id, 0 FROM categories WHERE name = 'Бакалея'
+AND NOT EXISTS (SELECT 1 FROM services WHERE name = 'Кофе зерновой');
+
+UPDATE coupons SET name = 'Постоянный покупатель' WHERE name = 'Постоянный клиент';
 
 INSERT INTO coupons (name, discount_percent)
-SELECT 'Постоянный клиент', 10
-WHERE NOT EXISTS (SELECT 1 FROM coupons WHERE name = 'Постоянный клиент');
+SELECT 'Постоянный покупатель', 10
+WHERE NOT EXISTS (SELECT 1 FROM coupons WHERE name = 'Постоянный покупатель');

@@ -35,8 +35,8 @@ export default function Admin({ services, reload }) {
           <button className="primary">Добавить</button>
         </form>
         <form onSubmit={(event) => { event.preventDefault(); run(() => changeDiscount(serviceId, discount)) }}>
-          <h2>Скидка на услугу</h2>
-          <label>Услуга<select value={serviceId} onChange={(event) => setServiceId(event.target.value)}>{services.map((service) => <option key={service.id} value={service.id}>{service.name}</option>)}</select></label>
+          <h2>Скидка на товар</h2>
+          <label>Товар<select value={serviceId} onChange={(event) => setServiceId(event.target.value)}>{services.map((service) => <option key={service.id} value={service.id}>{service.name}</option>)}</select></label>
           <label>Скидка, %<input type="number" min="0" max="100" value={discount} onChange={(event) => setDiscount(event.target.value)} /></label>
           <button className="primary">Сохранить</button>
         </form>

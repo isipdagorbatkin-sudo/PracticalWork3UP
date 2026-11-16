@@ -6,7 +6,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: #2c2527;
-  background: #faf7f8;
+  background: #f7f9f2;
 }
 
 button,
@@ -26,7 +26,7 @@ button {
   justify-content: space-between;
   padding: 0 7%;
   background: #ffffff;
-  border-bottom: 1px solid #eadfe2;
+  border-bottom: 1px solid #dbe6d5;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -35,7 +35,7 @@ button {
 .logo {
   border: 0;
   background: none;
-  color: #b65370;
+  color: #4f772d;
   font-size: 24px;
   font-weight: bold;
 }
@@ -55,8 +55,8 @@ nav button {
 
 nav button:hover,
 nav button.active {
-  background: #f7e5ea;
-  color: #a13e5b;
+  background: #e8f3df;
+  color: #3a5a40;
 }
 
 main {
@@ -81,7 +81,7 @@ main {
 .filters {
   background: #fff;
   padding: 22px;
-  border: 1px solid #eadfe2;
+  border: 1px solid #dbe6d5;
   border-radius: 10px;
   align-self: start;
   position: sticky;
@@ -100,7 +100,7 @@ main {
 }
 
 .filters input {
-  accent-color: #b65370;
+  accent-color: #4f772d;
   width: 17px;
   height: 17px;
 }
@@ -136,7 +136,7 @@ h1 {
 
 .service-card {
   background: #fff;
-  border: 1px solid #eadfe2;
+  border: 1px solid #dbe6d5;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 3px 12px rgba(70, 40, 50, 0.05);
@@ -149,12 +149,12 @@ h1 {
 }
 
 .category {
-  color: #a13e5b;
+  color: #3a5a40;
   font-size: 14px;
 }
 
 .discount {
-  background: #c74662;
+  background: #d97706;
   color: white;
   padding: 4px 8px;
   border-radius: 5px;
@@ -182,7 +182,7 @@ h1 {
   display: flex;
   align-items: end;
   justify-content: space-between;
-  border-top: 1px solid #f0e7e9;
+  border-top: 1px solid #e8eee4;
   padding-top: 16px;
 }
 
@@ -205,12 +205,12 @@ h1 {
   border: 0;
   border-radius: 7px;
   padding: 11px 18px;
-  background: #b65370;
+  background: #4f772d;
   color: white;
 }
 
 .primary:hover {
-  background: #9f3f5b;
+  background: #3f6626;
 }
 
 .primary:disabled {
@@ -220,7 +220,7 @@ h1 {
 .message,
 .empty {
   background: white;
-  border: 1px solid #eadfe2;
+  border: 1px solid #dbe6d5;
   padding: 50px;
   border-radius: 10px;
   text-align: center;
@@ -248,7 +248,7 @@ h1 {
   align-items: center;
   padding: 18px;
   background: #fff;
-  border: 1px solid #eadfe2;
+  border: 1px solid #dbe6d5;
   border-radius: 9px;
   margin-bottom: 10px;
 }
@@ -283,7 +283,7 @@ h1 {
 
 .order-box {
   background: #fff;
-  border: 1px solid #eadfe2;
+  border: 1px solid #dbe6d5;
   border-radius: 10px;
   padding: 24px;
   margin-top: 24px;
@@ -351,7 +351,7 @@ label select {
 .login-form {
   width: 400px;
   background: white;
-  border: 1px solid #eadfe2;
+  border: 1px solid #dbe6d5;
   border-radius: 10px;
   padding: 30px;
 }
@@ -383,7 +383,7 @@ label select {
 .admin-grid form {
   padding: 22px;
   background: white;
-  border: 1px solid #eadfe2;
+  border: 1px solid #dbe6d5;
   border-radius: 9px;
 }
 
@@ -400,8 +400,8 @@ label select {
 footer {
   padding: 20px;
   text-align: center;
-  background: #4b3c41;
-  color: #f6ecef;
+  background: #2f3e2d;
+  color: #f4f8ef;
 }
 
 @media (max-width: 800px) {

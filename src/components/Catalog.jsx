@@ -7,7 +7,7 @@ export default function Catalog({ services, categories, selected, setSelected, a
     setSelected(selected.includes(id) ? selected.filter((item) => item !== id) : [...selected, id])
   }
 
-  if (loading) return <div className="message">Загрузка услуг...</div>
+  if (loading) return <div className="message">Загрузка товаров...</div>
   if (error) return <div className="message error">{error}</div>
 
   return (
@@ -24,10 +24,10 @@ export default function Catalog({ services, categories, selected, setSelected, a
       <section>
         <div className="page-title">
           <div>
-            <h1>Каталог услуг</h1>
-            <p>Выберите подходящую процедуру</p>
+            <h1>Каталог продуктов</h1>
+            <p>Свежие продукты на каждый день</p>
           </div>
-          <span>{filtered.length} услуг</span>
+          <span>{filtered.length} товаров</span>
         </div>
         <div className="service-grid">
           {filtered.map((service) => (
@@ -38,7 +38,7 @@ export default function Catalog({ services, categories, selected, setSelected, a
               </div>
               <h2>{service.name}</h2>
               <p>{service.description}</p>
-              <div className="duration">Время: {service.duration} мин.</div>
+              <div className="duration">Срок хранения: {service.duration} дн.</div>
               <div className="card-bottom">
                 <div className="price">
                   {service.discount_percent > 0 && <del>{Number(service.price).toLocaleString()} ₽</del>}

@@ -68,7 +68,7 @@ export default function App() {
         {page === 'login' && <Login onLogin={onLogin} />}
         {page === 'admin' && user?.role === 'admin' && <Admin services={services} reload={loadData} />}
       </main>
-      <footer>Beauty Studio · Учебный проект</footer>
+      <footer>Свежая корзина · Учебный проект</footer>
     </>
   )
 }
